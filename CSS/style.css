@@ -54,6 +54,10 @@ h3 {
   --black-clr: hsl(0, 0%, 0%);
   --gray-clr-1: hsl(0, 0%, 63%);
   --gray-clr-2: hsl(0, 0%, 27%);
+
+  /* PADDING */
+  --header-sub-container-padding: 2.5rem 1.5rem;
+  --header-nav-padding: 2rem;
 }
 
 body {
@@ -103,7 +107,7 @@ body {
 }
 
 .header__sub-container {
-  padding: 2.5rem 1.5rem;
+  padding: var(--header-sub-container-padding);
   position: fixed;
   top: 0;
   left: 0;
@@ -123,7 +127,7 @@ body {
   transform: translateX(-100%);
   transition: transform 0.3s;
 
-  padding-inline: 2rem;
+  padding-inline: var(--header-nav-padding);
   display: grid;
   place-content: center flex-end;
 }
@@ -243,10 +247,12 @@ body {
 
 .primary-heading {
   font-size: 2rem;
+  font-size: clamp(2rem, 3vw + 1rem, 3rem);
 }
 
 .secondary-heading {
   font-size: 1rem;
+  font-size: clamp(1rem, 2vw + 1rem, 1.5rem);
   text-transform: uppercase;
   letter-spacing: 0.25rem;
 }
@@ -291,3 +297,115 @@ body {
   display: block;
 }
 /* -------------------------- */
+
+@media only screen and (min-width: 31.25rem) {
+  .hero-page__text {
+    max-width: 75ch;
+    margin: 0 auto;
+    gap: 1.5rem;
+  }
+
+  .para {
+    font-size: 15px;
+  }
+
+  .about__text {
+    gap: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 43.75rem) {
+  .header__menu {
+    display: none;
+  }
+
+  .header__nav {
+    background-color: transparent;
+    position: static;
+    transform: translate(0);
+    width: auto;
+  }
+
+  .header__img {
+    margin: 0;
+  }
+
+  .header__links {
+    color: var(--white-clr);
+    gap: 2.5rem;
+  }
+}
+
+@media only screen and (min-width: 62.5rem) {
+  :root {
+    --header-sub-container-padding: 2.5rem 3rem;
+    --header-nav-padding: 2rem;
+  }
+
+  .link {
+    position: relative;
+  }
+
+  .link::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2.5px;
+    background-color: #fff;
+    transition: all 0.3s;
+  }
+
+  .link:hover::after {
+    width: 100%;
+  }
+
+  .hero-page__sub-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    justify-items: flex-start;
+  }
+
+  .arrow-right {
+    right: -8rem;
+  }
+
+  .arrow-left {
+    right: -4rem;
+  }
+
+  .hero-page__text,
+  .about__text {
+    gap: 1rem;
+  }
+
+  .primary-heading {
+    font-size: 2.5rem;
+  }
+
+  .secondary-heading {
+    font-size: 1rem;
+  }
+
+  .para {
+    font-size: calc(12rem / 16);
+  }
+
+  .about__sub-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .about__img {
+    flex: 1;
+    min-width: 18.75rem;
+  }
+
+  .about__text {
+    flex: 1.1;
+    min-width: 18.75rem;
+  }
+}

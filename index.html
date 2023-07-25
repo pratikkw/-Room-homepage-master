@@ -65,7 +65,13 @@
         <div class="container">
           <div class="hero-page__sub-container">
             <div class="hero-page__img">
-              <img src="images/mobile-image-hero-1.jpg" alt="Hero Desktop" />
+              <picture>
+                <source
+                  srcset="images/desktop-image-hero-1.jpg"
+                  media="(min-width: 500px)"
+                />
+                <img src="images/mobile-image-hero-1.jpg" alt="Hero Desktop" />
+              </picture>
 
               <span class="arrow-left arrow"></span>
               <span class="arrow-right arrow"></span>
