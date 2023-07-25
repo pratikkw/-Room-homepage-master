@@ -1,0 +1,293 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  text-transform: uppercase;
+  border: none;
+  font: inherit;
+  background: none;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--black-clr);
+  line-height: 1;
+  font-weight: 700;
+}
+
+:root {
+  --white-clr: hsl(0, 0%, 100%);
+  --black-clr: hsl(0, 0%, 0%);
+  --gray-clr-1: hsl(0, 0%, 63%);
+  --gray-clr-2: hsl(0, 0%, 27%);
+}
+
+body {
+  min-height: 100vh;
+  font-size: 12px;
+  color: var(--gray-clr-1);
+  isolation: isolate;
+  font-family: "League+Spartan", sans-serif;
+  line-height: 1.8;
+  position: relative;
+}
+
+/* UTILITIES */
+.flex {
+  display: flex;
+  gap: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.mg-bottom-small {
+  margin-bottom: 0.5rem;
+}
+
+.mg-bottom-medium {
+  margin-bottom: 1rem;
+}
+
+.mg-bottom-large {
+  margin-bottom: 2rem;
+}
+/* -------------------- */
+
+.main {
+  --hero-page-text-padding: 3rem 1.75rem;
+  --about-text-padding: 2.5rem 1.75rem;
+}
+
+/* HEADER */
+.header {
+  position: relative;
+  z-index: 15;
+}
+
+.header__sub-container {
+  padding: 2.5rem 1.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+}
+
+.header__nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+
+  padding-inline: 2rem;
+  display: grid;
+  place-content: center flex-end;
+}
+
+.header__links {
+  gap: 1.5rem;
+  color: var(--black-clr);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* MENU BAR */
+.header__menu {
+  position: relative;
+  z-index: 99999;
+}
+
+.header__check {
+  display: none;
+}
+
+.header__label {
+  cursor: pointer;
+}
+
+.header__span {
+  display: inline-block;
+  width: 1.75rem;
+  height: 2.5px;
+  background-color: var(--gray-clr-2);
+  position: relative;
+}
+
+.header__span::after,
+.header__span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  background-color: var(--gray-clr-2);
+  width: 100%;
+  height: 100%;
+  transform: rotate(0deg);
+  transition: transform 0.3s;
+}
+
+.header__span::after {
+  top: 8px;
+}
+
+.header__span::before {
+  top: -8px;
+}
+
+.header__menu:has(.header__check:checked) .header__span {
+  background-color: transparent;
+}
+
+.header__menu:has(.header__check:checked) .header__span::after {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.header__menu:has(.header__check:checked) .header__span::before {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+.header__img {
+  margin: 0 auto;
+}
+
+.header__img img {
+  margin-top: 0.5rem;
+  margin-right: 2rem;
+}
+/* ------------------- */
+
+.hero-page__text {
+  padding: var(--hero-page-text-padding);
+}
+
+.hero-page__img {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-page__img img {
+  width: 100%;
+}
+
+.arrow {
+  content: "";
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--black-clr);
+  transition: all 0.3s;
+  width: 4rem;
+  aspect-ratio: 1/1;
+}
+
+.arrow-right {
+  right: 0;
+  background-image: url(../images/icon-angle-right.svg);
+}
+
+.arrow-left {
+  right: 4rem;
+  background-image: url(../images/icon-angle-left.svg);
+}
+
+.arrow:hover {
+  background-color: var(--gray-clr-1);
+}
+
+.primary-heading {
+  font-size: 2rem;
+}
+
+.secondary-heading {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+}
+
+.btn {
+  font-size: 1rem;
+  letter-spacing: 0.5rem;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  color: var(--gray-clr-1);
+}
+
+.about__text {
+  padding: var(--about-text-padding);
+}
+
+.about__img img {
+  width: 100%;
+}
+
+.bk {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  background-color: hsla(0, 0%, 0%, 0.75);
+  display: none;
+}
+
+/* TOGGLE CALSSES */
+.scroll-lock {
+  overflow: hidden;
+}
+
+.header__nav--active {
+  transform: translate(0);
+}
+
+.bk--active {
+  display: block;
+}
+/* -------------------------- */
